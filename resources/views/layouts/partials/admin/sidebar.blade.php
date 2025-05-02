@@ -5,6 +5,13 @@ $links = [
         'icon' => 'fa-solid fa-chart-line',
         'url' => route('admin.dashboard'),
         'active' => request()->routeIs('admin.dashboard')
+    ],
+    [
+        'name' => 'Familias',
+        'icon' => 'fa-solid fa-boxes-stacked',
+        'url' => route('admin.families.index'),
+        'active' => request()->routeIs('admin.families.*')
+
     ]
 ]
 ?>
