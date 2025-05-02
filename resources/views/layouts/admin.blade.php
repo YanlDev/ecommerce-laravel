@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/e1238f483a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -44,9 +45,9 @@
         <div class="flex justify-between items-center">
             @include('layouts.partials.admin.breadcrumbs')
             @isset($action)
-            <div>
-                {{$action}}
-            </div>
+                <div>
+                    {{$action}}
+                </div>
             @endisset
         </div>
 
@@ -62,6 +63,12 @@
 @livewireScripts
 @stack('js')
 
+@if(session('swal'))
+    <script>
+        const swalConfig = @json(session('swal'));
+        Swal.fire(swalConfig)
+    </script>
+@endif
 
 </body>
 </html>

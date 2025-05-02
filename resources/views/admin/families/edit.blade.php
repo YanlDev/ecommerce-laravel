@@ -45,9 +45,23 @@
 
     @push('js')
         <script>
-            function confirmDelete(){
-               const deleteFamily = document.getElementById("delete-form");
-                deleteFamily.submit();
+
+            function confirmDelete(e) {
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "Esta acción no se puede deshacer",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, eliminar",
+                    cancelButtonText:"Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById("delete-form").submit();
+                    }
+                });
+
             }
         </script>
     @endpush

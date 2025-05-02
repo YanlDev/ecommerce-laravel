@@ -13,7 +13,7 @@ class FamilyController extends Controller
      */
     public function index()
     {
-        $families = Family::orderBy('id','desc')->paginate(10);
+        $families = Family::orderBy('id', 'desc')->paginate(10);
         return view('admin.families.index', compact('families'));
     }
 
@@ -36,8 +36,14 @@ class FamilyController extends Controller
 
         ]);
         $family = Family::create($validateData);
-        return redirect()->route('admin.families.index');
 
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => 'Bien Hecho',
+            'text' => 'Familia creada correctamente',
+            'draggable' => true,
+        ]);
+        return redirect()->route('admin.families.index');
     }
 
     /**
@@ -66,6 +72,14 @@ class FamilyController extends Controller
             'name' => 'required|string',
         ]);
         $family->update($validateData);
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => 'Bien Hecho',
+            'text' => 'Familia actualizada exitosamente!',
+            'draggable' => true,
+        ]);
+
         return redirect()->route('admin.families.edit', $family);
     }
 
@@ -74,7 +88,21 @@ class FamilyController extends Controller
      */
     public function destroy(Family $family)
     {
-        $family->delete();
-        return redirect()->route('admin.families.index');
+        if ($family->categories->count() > 0) {
+            session()->flash('swal', [
+                'icon' => 'error',
+                'title' => 'Ups!',
+                'text' => 'No se puede eliminar este Familia porque tiene productos asociados.',
+            ]);
+            return redirect()->route('admin.families.edit', $family);
+        } else {
+            $family->delete();
+            session()->flash('swal', [
+                'icon' => 'success',
+                'title' => 'Bien Hecho',
+                'text' => 'Familia eliminada correctamente!',
+            ]);
+            return redirect()->route('admin.families.index');
+        }
     }
 }
