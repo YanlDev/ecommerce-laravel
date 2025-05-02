@@ -7,6 +7,13 @@
         'name' => 'Familias'
     ]
 ]">
+    {{--Es la forma en que se manda $action a admin.blade.php--}}
+    <x-slot name="action">
+        <a class="btn-blue" href="{{route('admin.families.create')}}">
+            Nuevo
+        </a>
+    </x-slot>
+
     @if($families->count())
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -34,7 +41,7 @@
                             {{$family->name}}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="{{route('admin.families.edit', $family->id)}}" class="btn-blue">Editar</a>
                         </td>
                     </tr>
                 @endforeach
@@ -59,6 +66,4 @@
             </div>
         </div>
     @endif
-
-
 </x-admin-layout>

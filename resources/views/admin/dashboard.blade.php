@@ -2,8 +2,9 @@
     ['name' => 'Dashboard',
     'route' => route('admin.dashboard')],
 ]">
+
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="card p-6">
             <div class="flex items-center">
                 <img class="size-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
                      alt="{{ Auth::user()->name }}"/>
@@ -18,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white rounded-lg shadow-md p-6 flex items-center justify-center">
+        <div class="card p-6 flex items-center justify-center">
             <h2 class="text-xl font-semibold">
                 YanlDev Enterprice Market
             </h2>
