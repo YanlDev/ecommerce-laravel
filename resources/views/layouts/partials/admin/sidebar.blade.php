@@ -12,6 +12,13 @@ $links = [
         'url' => route('admin.families.index'),
         'active' => request()->routeIs('admin.families.*')
 
+    ],
+    [
+        'name' => 'Categorías',
+        'icon' => 'fa-solid fa-tags',
+        'url' => route('admin.categories.index'),
+        'active' => request()->routeIs('admin.categories.*')
+
     ]
 ]
 ?>

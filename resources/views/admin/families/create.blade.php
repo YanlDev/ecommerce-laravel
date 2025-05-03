@@ -15,7 +15,7 @@
     <div class="card">
         <form action="{{route('admin.families.store')}}" method="post">
             @csrf
-
+            <x-validation-errors class="mb-4"></x-validation-errors>
             <x-label class="mb-2">
                 Nombre
             </x-label>

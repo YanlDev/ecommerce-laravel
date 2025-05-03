@@ -1,11 +1,33 @@
-@if ($errors->any())
-    <div {{ $attributes }}>
-        <div class="font-medium text-red-600 dark:text-red-400">{{ __('Whoops! Something went wrong.') }}</div>
+@props(['timeout' => 5000])
 
-        <ul class="mt-3 list-disc list-inside text-sm text-red-600 dark:text-red-400">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+@if ($errors->any())
+    @push('js')
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const errorMessages = @json($errors->all());
+
+                let errorHtml = '<ul class="text-left">';
+                errorMessages.forEach(function(error) {
+                    errorHtml += '<li>' + error + '</li>';
+                });
+                errorHtml += '</ul>';
+
+                Swal.fire({
+                    title: '{{ __("¡Ups! Algo ha salido mal.") }}',
+                    html: errorHtml,
+                    icon: 'error',
+                    timer: {{ $timeout }},
+                    timerProgressBar: true,
+                    showConfirmButton: true,
+                    confirmButtonText: 'Entendido',
+                    customClass: {
+                        container: 'validation-errors-popup',
+                        popup: 'rounded-lg',
+                        title: 'text-red-600 font-medium',
+                        htmlContainer: 'text-sm text-red-600'
+                    }
+                });
+            });
+        </script>
+    @endpush
 @endif

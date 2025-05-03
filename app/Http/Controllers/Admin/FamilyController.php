@@ -39,8 +39,8 @@ class FamilyController extends Controller
 
         session()->flash('swal', [
             'icon' => 'success',
-            'title' => 'Bien Hecho',
-            'text' => 'Familia creada correctamente',
+            'title' => 'Bien Hecho!',
+            'text' => 'Familia creada correctamente!',
             'draggable' => true,
         ]);
         return redirect()->route('admin.families.index');
@@ -75,8 +75,8 @@ class FamilyController extends Controller
 
         session()->flash('swal', [
             'icon' => 'success',
-            'title' => 'Bien Hecho',
-            'text' => 'Familia actualizada exitosamente!',
+            'title' => 'Bien Hecho!',
+            'text' => 'Familia actualizada correctamente!',
             'draggable' => true,
         ]);
 
@@ -99,7 +99,7 @@ class FamilyController extends Controller
             $family->delete();
             session()->flash('swal', [
                 'icon' => 'success',
-                'title' => 'Bien Hecho',
+                'title' => 'Bien Hecho!',
                 'text' => 'Familia eliminada correctamente!',
             ]);
             return redirect()->route('admin.families.index');
