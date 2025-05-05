@@ -15,10 +15,16 @@ $links = [
     ],
     [
         'name' => 'Categorías',
-        'icon' => 'fa-solid fa-tags',
+        'icon' => 'fa-solid fa-tag',
         'url' => route('admin.categories.index'),
         'active' => request()->routeIs('admin.categories.*')
 
+    ],
+    [
+        'name' => 'Subcategorías',
+        'icon' => 'fa-solid fa-tags',
+        'url' => route('admin.subcategories.index'),
+        'active' => request()->routeIs('admin.subcategories.*')
     ]
 ]
 ?>
