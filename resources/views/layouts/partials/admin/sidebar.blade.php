@@ -25,7 +25,14 @@ $links = [
         'icon' => 'fa-solid fa-tags',
         'url' => route('admin.subcategories.index'),
         'active' => request()->routeIs('admin.subcategories.*')
+    ],
+    [
+        'name' => 'Productos',
+        'icon' => 'fa-solid fa-box',
+        'url' => route('admin.products.index'),
+        'active' => request()->routeIs('admin.products.*')
     ]
+
 ]
 ?>
 <aside id="logo-sidebar"

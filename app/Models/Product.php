@@ -21,7 +21,8 @@ class Product extends Model
 
     public function subcategory()
     {
-        return $this->belongsToMany(Subcategory::class);
+//        return $this->belongsToMany(Subcategory::class);
+        return $this->belongsTo(Subcategory::class);
     }
 
     public function variants()
